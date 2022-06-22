@@ -1,0 +1,32 @@
+<div class="center">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <div>
+        <p>
+            Please Enter the below Details:
+        </p>
+    </div>
+    <div>
+      <label>
+        First Name:
+        <input formControlName="firstname" placeholder="Your First name">
+      </label>
+      <div *ngIf="myForm.get('firstname').invalid && (myForm.get('firstname').dirty || myForm.get('firstname').touched)">
+        Please provide a first name.
+      </div>
+    </div>
+    <div>
+      <label>
+        Last Name:
+        <input formControlName="lastname" placeholder="Your Last name">
+      </label>
+      <div *ngIf="myForm.get('lastname').invalid && (myForm.get('lastname').dirty || myForm.get('lastname').touched)">
+        Please provide a last name.
+      </div>
+    </div>
+    <button type="submit" [disabled]="myForm.invalid">Send</button>
+  </form>
+</div>
+
+<div>
+   <app-persondetails [data] = 'personsList'></app-persondetails>
+</div>
