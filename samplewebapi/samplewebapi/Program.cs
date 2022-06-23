@@ -1,4 +1,6 @@
-using samplewebapi.Services;
+using samplemanager.Manager;
+using sampleservices.Services;
+using samplewebapi.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Register interface and classes
 builder.Services.AddScoped<IPersonService, PersonService>();
-builder.Services.AddScoped<IFileHandler, FileHandler>();
+builder.Services.AddScoped<AbstractFileHandler, FileHandler>();
+builder.Services.AddScoped<CustomFilter>();
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
     builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();

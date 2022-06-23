@@ -1,6 +1,6 @@
-﻿using samplewebapi.Models;
+﻿using samplemodels.Models;
 
-namespace samplewebapi.Services
+namespace sampleservices.Services
 {
     public interface IPersonService
     {

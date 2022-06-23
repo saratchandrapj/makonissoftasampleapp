@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-using samplewebapi.Models;
+﻿using samplemodels.Models;
+using sampleservices.Services;
 
-namespace samplewebapi.Services
+namespace samplemanager.Manager
 {
     public class PersonService : IPersonService
     {
-        private IFileHandler _fileHandler;
-            public PersonService(IFileHandler fileHandler)
+        private AbstractFileHandler _fileHandler;
+        public PersonService(AbstractFileHandler fileHandler)
         {
             _fileHandler = fileHandler;
         }
@@ -43,7 +43,7 @@ namespace samplewebapi.Services
             {
                 allPersonDetails = await GetAllPersons();
                 allPersonDetails.Add(personDetails);
-                isSuccess =await _fileHandler.UpdateFile(allPersonDetails.SerializeObject());
+                isSuccess = await _fileHandler.UpdateFile(allPersonDetails.SerializeObject());
                 return isSuccess;
             }
             catch (Exception e)
